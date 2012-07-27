@@ -1641,10 +1641,12 @@ cc_process_args(struct args *orig_args, struct args **preprocessor_args,
 
 			if (arg_profile_dir) {
 				char *option = x_strndup(argv[i], arg_profile_dir - argv[i]);
-				char *dir;
+				char *dir = NULL;
 
+#ifndef _WIN32
 				/* Convert to absolute path. */
 				dir = x_realpath(arg_profile_dir + 1);
+#endif
 				if (!dir) {
 					/* Directory doesn't exist. */
 					dir = x_strdup(arg_profile_dir + 1);

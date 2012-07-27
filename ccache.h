@@ -134,7 +134,9 @@ int safe_create_wronly(const char *fname);
 char *format_human_readable_size(uint64_t size);
 char *format_parsable_size_with_suffix(uint64_t size);
 bool parse_size_with_suffix(const char *str, uint64_t *size);
+#ifndef _WIN32
 char *x_realpath(const char *path);
+#endif
 char *gnu_getcwd(void);
 #ifndef HAVE_STRTOK_R
 char *strtok_r(char *str, const char *delim, char **saveptr);
